@@ -44,11 +44,11 @@ export default class CreatePlan extends Component {
             <div className="wrapper">
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
-                        <label>Enter Name</label>
+                        <label>Enter Plan</label>
                         <input type="text" value={this.state.name} onChange={this.onChangeUserName} className="form-control" />
                     </div>
                     <div className="form-group">
-                        <label>Enter Email</label>
+                        <label>Enter Place</label>
                         <input type="text" value={this.state.email} onChange={this.onChangeUserEmail} className="form-control" />
                     </div>
                     <div className="form-group">
