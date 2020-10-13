@@ -25,8 +25,8 @@ export default class CreatePlan extends Component {
         e.preventDefault();
 
         const userObject = {
-            name: this.state.name,
-            email: this.state.email,
+            plan: this.state.name,
+            location: this.state.email,
             description: this.state.description
         };
 

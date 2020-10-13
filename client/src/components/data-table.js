@@ -15,8 +15,8 @@ const useStyles = makeStyles((theme) => ({
 const DataTable = (props) =>  {
     const classes = useStyles();
     const [ edit, setEdit ] = useState(false);
-    const [ name, setName ] = useState(props.obj.name);
-    const [ email, setEmail ] = useState(props.obj.email);
+    const [ name, setName ] = useState(props.obj.plan);
+    const [ email, setEmail ] = useState(props.obj.location);
     const [ description, setDescription ] = useState(props.obj.description);
 
     const onEdit = () => {
@@ -39,9 +39,9 @@ const DataTable = (props) =>  {
         e.preventDefault();
 
         const userObject = {
-            name,
-            email,
-            description
+            plan:name,
+            location:email,
+            description:description
         };
 
         axios.put(`users/update/${props.obj._id}`, userObject).then((res) => {
@@ -55,10 +55,10 @@ const DataTable = (props) =>  {
     return (
         <tr>
             <td>
-                {edit ? <input type="text" value={name} onChange={onChangeUserName}/> : props.obj.name}
+                {edit ? <input type="text" value={name} onChange={onChangeUserName}/> : props.obj.plan}
             </td>
             <td>
-                {edit ? <input type="text" value={email} onChange={onChangeUserEmail}/> : props.obj.email}
+                {edit ? <input type="text" value={email} onChange={onChangeUserEmail}/> : props.obj.location}
             </td>
             <td>
                 {edit ? <input type="text" value={description} onChange={onChangeUserDescription}/> : props.obj.description}
