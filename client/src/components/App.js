@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 import Header from './Header';
 import Landing from "./Landing";
+import Main from "./Main";
 
-const Dashboard = () => <h2>Dashboard</h2>;
-const SurveyNew = () => <h2>SurveyNew</h2>;
 
 class App extends Component {
 
@@ -16,16 +15,15 @@ class App extends Component {
     }
 
     render() {
-        console.log(this.props)
         return (
             <div className="container">
                 <BrowserRouter>
                     <div>
                         <Header/>
-                        <Route exact path="/" component={Landing}/>
-                        <Route exact path="/surveys" component={Dashboard}/>
-                        <Route exact path="/surveys/new" component={SurveyNew}/>
-                        {/*<Route exact path="/surveys" component={Dashboard}/>*/}
+                        <Switch>
+                            <Route exact path="/" component={Landing}/>
+                            <Route path="/main" component={Main}/>
+                        </Switch>
                     </div>
                 </BrowserRouter>
             </div>

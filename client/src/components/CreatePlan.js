@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import axios from '../apis/axios.config';
 
-export default class CreateUser extends Component {
+export default class CreatePlan extends Component {
 
     state = {
         name: '',
-        email: ''
+        email: '',
+        description: ''
     }
 
     onChangeUserName = (e) => {
@@ -16,12 +17,17 @@ export default class CreateUser extends Component {
         this.setState({ email: e.target.value })
     }
 
+    onChangeUserDescription = (e) => {
+        this.setState({ description: e.target.value })
+    }
+
     onSubmit = (e) => {
         e.preventDefault();
 
         const userObject = {
             name: this.state.name,
-            email: this.state.email
+            email: this.state.email,
+            description: this.state.description
         };
 
         axios.post('users/create', userObject).then((res) => {
@@ -30,7 +36,7 @@ export default class CreateUser extends Component {
             console.log(err);
         })
 
-        this.setState({name: '', email: ''})
+        this.setState({name: '', email: '', description: ''})
     }
 
     render() {
@@ -44,6 +50,10 @@ export default class CreateUser extends Component {
                     <div className="form-group">
                         <label>Enter Email</label>
                         <input type="text" value={this.state.email} onChange={this.onChangeUserEmail} className="form-control" />
+                    </div>
+                    <div className="form-group">
+                        <label>Enter Description</label>
+                        <input type="text" value={this.state.description} onChange={this.onChangeUserDescription} className="form-control" />
                     </div>
                     <div className="form-group">
                         <input type="submit" value="Create User" className="btn btn-success btn-block" />
