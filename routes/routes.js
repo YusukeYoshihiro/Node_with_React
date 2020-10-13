@@ -2,10 +2,10 @@ const express = require('express'),
     mongoose = require('mongoose'),
     router = express.Router();
 
-let user = mongoose.model('users');
+let plan = mongoose.model('plans');
 
 router.route('/create').post((req, res, next) => {
-    user.create(req.body, (err, data) => {
+    plan.create(req.body, (err, data) => {
         if (err) {
             return next(err);
         } else {
@@ -16,7 +16,7 @@ router.route('/create').post((req, res, next) => {
 });
 
 router.route('/').get((req, res, next) => {
-    user.find((err, data) => {
+    plan.find((err, data) => {
         if (err) {
             return next(err);
         } else {
@@ -26,7 +26,7 @@ router.route('/').get((req, res, next) => {
 });
 
 router.route('/edit/:id').get((req, res, next) => {
-    user.findById(req.params.id, (err, data) => {
+    plan.findById(req.params.id, (err, data) => {
         if (err) {
             return next(err);
         } else {
@@ -36,7 +36,7 @@ router.route('/edit/:id').get((req, res, next) => {
 });
 
 router.route('/update/:id').put((req, res, next) => {
-    user.findByIdAndUpdate(req.params.id, {
+    plan.findByIdAndUpdate(req.params.id, {
         $set: req.body
     }, (err, data) => {
         if (err) {
@@ -51,7 +51,7 @@ router.route('/update/:id').put((req, res, next) => {
 
 router.route('/delete/:id').delete((req, res, next) => {
     console.log(req.params.id)
-    user.findByIdAndRemove(req.params.id, (error, data) => {
+    plan.findByIdAndRemove(req.params.id, (error, data) => {
         if (error) {
             return next(error);
         } else {

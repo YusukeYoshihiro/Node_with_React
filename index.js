@@ -7,6 +7,7 @@ const cookieSession = require('cookie-session');
 const keys = require('./config/keys');
 
 require('./models/User');
+require('./models/Plan');
 require('./services/passport');
 
 mongoose.connect(keys.mongoURI, {
@@ -36,7 +37,7 @@ const userRoute = require('./routes/routes');
 app.use('/users', userRoute);
 require('./routes/authRoutes')(app);
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 4000;
 app.listen(PORT);
 
 // Error Handling

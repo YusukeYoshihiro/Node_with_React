@@ -17,10 +17,11 @@ class Header extends Component {
 
     render() {
         return (
+
             <nav>
                 <div className="nav-wrapper">
                     <Link to={this.props.auth ? '/main' : '/'} className="left brand-logo">
-                        Email
+                        Trip Memo
                     </Link>
                     <ul className="right">
                         {this.renderContent()}

@@ -30,7 +30,6 @@ export default class Users extends Component {
     }
 
     onDelete = (id) => {
-        console.log(id)
         axios.delete(`users/delete/${id}`).then((res) => {
             this.refresh();
         }).catch((err) => {
@@ -40,7 +39,7 @@ export default class Users extends Component {
 
     dataTable() {
         return this.state.usersCollection.map((data, i) => {
-            return <DataTable obj={data} key={i} onDelete={this.onDelete}/>;
+            return <DataTable obj={data} key={i} onDelete={this.onDelete} refresh={this.refresh}/>;
         });
     }
 
